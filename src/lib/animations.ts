@@ -1,26 +1,26 @@
 import type { Transition, Variants } from "framer-motion";
 
 /* ─────────────────────────────────────────────────────
-   Easing Curves
+   Easing Curves — Human & Elegant
    ───────────────────────────────────────────────────── */
 
 export const EASE_SMOOTH = [0.25, 0.1, 0.25, 1] as const;
-export const EASE_SPRING = [0.34, 1.56, 0.64, 1] as const;
+export const EASE_SPRING = [0.34, 1.2, 0.64, 1] as const;
 export const EASE_OUT = [0, 0, 0.2, 1] as const;
 export const EASE_IN_OUT = [0.4, 0, 0.2, 1] as const;
 
 /* ─────────────────────────────────────────────────────
-   Duration Tokens (seconds)
+   Duration Tokens — Luxury Pacing (seconds)
    ───────────────────────────────────────────────────── */
 
 export const DUR = {
-  instant: 0.15,
-  fast: 0.25,
-  default: 0.35,
-  moderate: 0.5,
-  slow: 0.7,
-  slower: 0.9,
-  cinematic: 1.2,
+  instant: 0.3,
+  fast: 0.5,
+  default: 0.7,
+  moderate: 1.0,
+  slow: 1.2,
+  slower: 1.5,
+  cinematic: 2.0,
 } as const;
 
 /* ─────────────────────────────────────────────────────
@@ -53,7 +53,7 @@ export const slideUp: Transition = {
   ease: EASE_SMOOTH,
 };
 
-export const stagger = (delayIncrement: number = 0.08) => ({
+export const stagger = (delayIncrement: number = 0.15) => ({
   transition: {
     staggerChildren: delayIncrement,
   },
@@ -84,30 +84,30 @@ export const scaleVariants: Variants = {
 };
 
 /* ─────────────────────────────────────────────────────
-   Hover / Tap Presets
+   Hover / Tap Presets — Subtle & Confident
    ───────────────────────────────────────────────────── */
 
 export const hoverLift = {
   y: -2,
-  transition: { duration: DUR.fast, ease: EASE_SMOOTH },
+  transition: { duration: DUR.default, ease: EASE_SMOOTH },
 };
 
 export const hoverScale = {
-  scale: 1.02,
-  transition: { duration: DUR.fast, ease: EASE_SMOOTH },
+  scale: 1.01,
+  transition: { duration: DUR.default, ease: EASE_SMOOTH },
 };
 
 export const tapScale = {
-  scale: 0.98,
-  transition: { duration: DUR.instant, ease: EASE_SMOOTH },
+  scale: 0.99,
+  transition: { duration: DUR.fast, ease: EASE_SMOOTH },
 };
 
 /* ─────────────────────────────────────────────────────
    Scroll-Triggered Viewport Config
    ───────────────────────────────────────────────────── */
 
-export const viewportOnce = { once: true, margin: "-80px" } as const;
-export const viewportOnceTight = { once: true, margin: "-40px" } as const;
+export const viewportOnce = { once: true, margin: "-120px" } as const;
+export const viewportOnceTight = { once: true, margin: "-60px" } as const;
 
 /* ─────────────────────────────────────────────────────
    Reduced Motion Helper
@@ -117,7 +117,7 @@ export function motionTransition(
   reduced: boolean,
   transition: Transition,
 ): Transition {
-  return reduced ? { duration: 0.3 } : transition;
+  return reduced ? { duration: 0.5 } : transition;
 }
 
 export function motionVariant(

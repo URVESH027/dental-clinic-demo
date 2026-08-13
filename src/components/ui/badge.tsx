@@ -24,14 +24,14 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const variantClasses: Record<BadgeVariant, string> = {
-  gold: "bg-gold-50 dark:bg-gold-950/30 text-gold-700 dark:text-gold-400 border border-gold-200/60 dark:border-gold-800/40",
-  navy: "bg-navy-100 dark:bg-navy-800 text-navy-700 dark:text-navy-200 border border-navy-200 dark:border-navy-700",
+  gold: "bg-gold-light/30 dark:bg-gold-deep/30 text-gold-deep dark:text-gold border border-gold-light/60 dark:border-gold-deep/40",
+  navy: "bg-stone dark:bg-charcoal text-charcoal dark:text-stone border border-stone dark:border-charcoal",
   sage: "bg-sage-50 dark:bg-sage-700/15 text-sage-600 dark:text-sage-400 border border-sage-200 dark:border-sage-700/30",
   rose: "bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/30",
   sky: "bg-sky-50 dark:bg-sky-950/20 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-800/30",
   outline:
-    "bg-transparent text-navy-600 dark:text-navy-300 border border-navy-200 dark:border-navy-700",
-  glass: "glass-premium text-navy-900 dark:text-ivory-50",
+    "bg-transparent text-charcoal dark:text-warmgray border border-stone dark:border-charcoal",
+  glass: "glass-premium text-nearblack dark:text-warmwhite",
 };
 
 const sizeClasses: Record<BadgeSize, string> = {

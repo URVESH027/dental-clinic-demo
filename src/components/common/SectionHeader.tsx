@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { EASE_SMOOTH, DUR } from "@/lib/animations";
+import { EASE_SMOOTH } from "@/lib/animations";
 
 interface SectionHeaderProps {
   eyebrow: string;
@@ -37,10 +37,10 @@ export function SectionHeader({
         initial={{ opacity: 0, y: reduced ? 0 : 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={reduced ? { duration: 0.3 } : { duration: 0.5, ease: EASE_SMOOTH, delay: 0.05 }}
-        className="inline-flex items-center gap-2.5 rounded-full border border-gold-200/70 dark:border-gold-800/50 bg-gold-50/80 dark:bg-gold-950/30 px-4 py-2 text-[0.6875rem] sm:text-xs font-medium tracking-[0.14em] uppercase text-gold-700 dark:text-gold-400 backdrop-blur-sm mb-6 sm:mb-8"
+        transition={reduced ? { duration: 0.3 } : { duration: 0.7, ease: EASE_SMOOTH, delay: 0.05 }}
+        className="inline-flex items-center gap-2.5 text-[0.6875rem] sm:text-xs font-medium tracking-[0.2em] uppercase text-warmgray mb-6 sm:mb-8"
       >
-        <span className="h-1 w-1 rounded-full bg-gold-500 shrink-0" aria-hidden="true" />
+        <span className="h-1 w-1 rounded-full bg-gold shrink-0" aria-hidden="true" />
         {eyebrow}
       </motion.span>
 
@@ -49,13 +49,13 @@ export function SectionHeader({
         initial={{ opacity: 0, y: reduced ? 0 : 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={reduced ? { duration: 0.3 } : { duration: 0.7, ease: EASE_SMOOTH, delay: 0.1 }}
-        className="text-3xl sm:text-4xl lg:text-[2.75rem] xl:text-5xl font-serif tracking-tight leading-[1.1] text-navy-950 dark:text-ivory-50 mb-5 sm:mb-6"
+        transition={reduced ? { duration: 0.3 } : { duration: 0.9, ease: EASE_SMOOTH, delay: 0.1 }}
+        className="text-3xl sm:text-4xl lg:text-[2.75rem] xl:text-5xl font-serif font-normal tracking-tight leading-[1.1] text-charcoal dark:text-ivory mb-5 sm:mb-6"
       >
         {titleAccent ? (
           <>
             {title.split(titleAccent)[0]}
-            <span className="text-gold-600 dark:text-gold-400">{titleAccent}</span>
+            <span className="text-gold">{titleAccent}</span>
             {title.split(titleAccent)[1] || ""}
           </>
         ) : (
@@ -69,8 +69,8 @@ export function SectionHeader({
           initial={{ opacity: 0, y: reduced ? 0 : 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={reduced ? { duration: 0.3 } : { duration: 0.7, ease: EASE_SMOOTH, delay: 0.2 }}
-          className="text-base sm:text-lg text-navy-600 dark:text-navy-300 leading-relaxed"
+          transition={reduced ? { duration: 0.3 } : { duration: 0.9, ease: EASE_SMOOTH, delay: 0.2 }}
+          className="text-base sm:text-lg text-warmgray leading-relaxed"
         >
           {description}
         </motion.p>
@@ -81,8 +81,8 @@ export function SectionHeader({
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
-        transition={reduced ? { duration: 0.3 } : { duration: 0.6, ease: EASE_SMOOTH, delay: 0.3 }}
-        className={`h-[1.5px] w-12 bg-gradient-to-r from-gold-500 to-gold-700 mt-8 ${align === "center" ? "mx-auto" : ""}`}
+        transition={reduced ? { duration: 0.3 } : { duration: 0.8, ease: EASE_SMOOTH, delay: 0.3 }}
+        className={`h-[1px] w-12 bg-gold mt-8 ${align === "center" ? "mx-auto" : ""}`}
         aria-hidden="true"
       />
     </motion.div>

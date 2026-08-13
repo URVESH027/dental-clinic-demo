@@ -8,215 +8,162 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { DUR } from "@/lib/animations";
+import { BOOK_HREF } from "@/data/navigation";
 import { ArrowRight } from "lucide-react";
-import { Eyebrow } from "@/components/ui/eyebrow";
-import { EASE_SMOOTH, DUR } from "@/lib/animations";
 
-/* ─────────────────────────────────────────────────────
-   Trust Highlights
-   ───────────────────────────────────────────────────── */
+const EASE = [0.25, 0.1, 0.25, 1] as const;
 
-const trustHighlights = [
-  {
-    number: "15+",
-    label: "Years",
-    detail: "of Excellence",
-  },
-  {
-    number: "15K+",
-    label: "Smiles",
-    detail: "Transformed",
-  },
-  {
-    number: "Board",
-    label: "Certified",
-    detail: "Specialists",
-  },
-  {
-    number: "ISO",
-    label: "Certified",
-    detail: "Clinic",
-  },
+const stats = [
+  { value: "15+", label: "Years of practice" },
+  { value: "15,000+", label: "Smiles transformed" },
+  { value: "8", label: "Board-certified specialists" },
+  { value: "4.9", label: "Google rating" },
 ];
-
-/* ─────────────────────────────────────────────────────
-   Philosophy — Editorial Storytelling Section
-   ───────────────────────────────────────────────────── */
 
 export function Philosophy() {
   const prefersReducedMotion = useReducedMotion();
   const reduced = !!prefersReducedMotion;
   const sectionRef = useRef<HTMLElement>(null);
 
-  /* Subtle parallax on the image */
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-  const imageY = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [24, -24]);
 
   return (
     <section
       ref={sectionRef}
       id="philosophy"
-      className="relative py-24 sm:py-32 lg:py-40 overflow-hidden"
+      className="section-light relative py-24 lg:py-40 overflow-hidden"
       aria-labelledby="philosophy-heading"
     >
-      {/* ── Background ── */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute inset-0 bg-white dark:bg-navy-950" />
-        {/* Warm gold radial behind image */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,rgba(200,169,81,0.04)_0%,transparent_50%)] dark:bg-[radial-gradient(ellipse_at_75%_50%,rgba(200,169,81,0.06)_0%,transparent_50%)]" />
-        {/* Subtle grain */}
-        <div className="hero-noise absolute inset-0 opacity-[0.015] dark:opacity-[0.01]" />
-      </div>
+      {/* Quiet backdrop */}
+      <div className="absolute top-[-10%] left-[-5%] h-[60vh] w-[40vw] bg-[radial-gradient(ellipse_at_center,rgba(199,180,134,0.08)_0%,transparent_60%)] pointer-events-none" aria-hidden="true" />
 
-      {/* ── Content ── */}
-      <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-14 z-10">
-        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-16 lg:gap-20 xl:gap-24 items-center">
+      <div className="container-editorial relative z-10">
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-12 items-center">
 
-          {/* ════════════════════════════════════════════
-              LEFT — Editorial Narrative
-              ════════════════════════════════════════════ */}
-          <div className="max-w-xl lg:max-w-lg xl:max-w-xl">
-
-            {/* Eyebrow */}
-            <motion.div
-              initial={{ opacity: 0, y: reduced ? 0 : 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.1 }}
-              className="mb-6 sm:mb-8"
-            >
-              <Eyebrow animate={false}>Our Philosophy</Eyebrow>
-            </motion.div>
-
-            {/* Headline — Magazine editorial feel */}
-            <motion.h2
-              id="philosophy-heading"
-              initial={{ opacity: 0, y: reduced ? 0 : 20, filter: reduced ? "none" : "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: EASE_SMOOTH, delay: 0.15 }}
-              className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-6xl font-serif tracking-tight leading-[1.08] text-navy-950 dark:text-ivory-50 mb-6 sm:mb-8"
-            >
-              Where Every Smile{" "}
-              <span className="text-gold-600 dark:text-gold-400">Tells a Story</span>
-            </motion.h2>
-
-            {/* Narrative — Short, emotional */}
+          {/* LEFT — Editorial typography */}
+          <div className="lg:col-span-6 lg:pr-8">
             <motion.div
               initial={{ opacity: 0, y: reduced ? 0 : 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.3 }}
-              className="space-y-4 mb-10 sm:mb-12"
+              transition={{ duration: DUR.moderate, ease: EASE }}
+              className="flex items-center gap-4 mb-8"
             >
-              <p className="text-lg sm:text-xl text-navy-600 dark:text-navy-300 leading-relaxed">
-                Founded on the belief that dentistry should feel as good as the results we create — we build relationships that last decades, not appointments.
-              </p>
-              <p className="text-base text-navy-500 dark:text-navy-400 leading-relaxed">
-                Eight board-certified specialists. One unified vision. Every detail — from our private suites to digital treatment planning — designed around your comfort and confidence.
-              </p>
+              <span className="h-px w-10 bg-gold" aria-hidden="true" />
+              <span className="eyebrow-text">Our Philosophy</span>
             </motion.div>
 
-            {/* Trust Highlights — Elegant 2×2 grid */}
+            <motion.h2
+              id="philosophy-heading"
+              initial={{ opacity: 0, y: reduced ? 0 : 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: DUR.slow, ease: EASE, delay: 0.1 }}
+              className="font-serif text-5xl lg:text-6xl leading-[1.04] tracking-tight text-ink mb-10 max-w-[12ch]"
+            >
+              Where every
+              <span className="block text-gold-deep italic">smile</span>
+              tells a story.
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: reduced ? 0 : 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: DUR.slow, ease: EASE, delay: 0.25 }}
+              className="max-w-md text-base lg:text-lg text-warmgray leading-relaxed mb-10"
+            >
+              We built Thousand Smile on a simple conviction: dentistry
+              should feel as good as the results we create. Every detail —
+              from the privacy of our suites to a treatment plan mapped
+              digitally before we begin — exists to make your experience
+              calm, precise, and entirely yours.
+            </motion.p>
+
+            {/* Statement + quiet stats */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.4 }}
-              className="mb-10 sm:mb-12"
+              transition={{ duration: DUR.slow, ease: EASE, delay: 0.4 }}
             >
-              <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-                {trustHighlights.map((item, i) => (
+              <div className="border-l border-gold pl-5 mb-10">
+                <p className="font-serif text-lg italic text-ink/80 leading-relaxed max-w-sm">
+                  &ldquo;We don&rsquo;t treat teeth. We design the way you
+                  face the world.&rdquo;
+                </p>
+                <p className="mt-2 text-[0.6875rem] font-medium tracking-[0.2em] uppercase text-warmgray">
+                  Dr. Sarah Chen — Founder
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-x-8 gap-y-7 max-w-lg">
+                {stats.map((stat, i) => (
                   <motion.div
-                    key={item.label}
+                    key={stat.label}
                     initial={{ opacity: 0, y: reduced ? 0 : 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{
-                      duration: 0.5,
-                      ease: EASE_SMOOTH,
-                      delay: 0.5 + i * 0.08,
-                    }}
-                    className="group"
+                    transition={{ duration: DUR.moderate, ease: EASE, delay: 0.5 + i * 0.08 }}
+                    className="border-t border-stone pt-4"
                   >
-                    <div className="flex items-baseline gap-2 mb-1">
-                      <span className="text-2xl sm:text-3xl font-bold text-navy-900 dark:text-ivory-50 tracking-tight">
-                        {item.number}
-                      </span>
-                      <span className="text-sm font-semibold text-gold-600 dark:text-gold-400">
-                        {item.label}
-                      </span>
-                    </div>
-                    <p className="text-[0.75rem] font-medium tracking-wide uppercase text-navy-400 dark:text-navy-500">
-                      {item.detail}
+                    <p className="font-serif text-2xl text-ink leading-none mb-1.5">{stat.value}</p>
+                    <p className="text-[0.625rem] font-medium tracking-[0.2em] uppercase text-warmgray">
+                      {stat.label}
                     </p>
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
 
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: reduced ? 0 : 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.7 }}
-            >
-              <motion.a
-                href="#doctors"
-                whileHover={reduced ? {} : { x: 4 }}
-                whileTap={reduced ? {} : { scale: 0.98 }}
-                className="group inline-flex items-center gap-3 text-[0.9375rem] font-semibold text-navy-900 dark:text-ivory-50 hover:text-gold-700 dark:hover:text-gold-400 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-gold-500 focus-visible:outline-offset-3 rounded-lg"
+              <motion.div
+                initial={{ opacity: 0, y: reduced ? 0 : 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: DUR.moderate, ease: EASE, delay: 0.85 }}
+                className="mt-10"
               >
-                <span className="relative">
-                  Meet Our Doctors
-                  <span className="absolute inset-x-0 -bottom-0.5 h-[1.5px] bg-gradient-to-r from-gold-500 to-gold-600 origin-left transition-transform duration-300 group-hover:scale-x-100 scale-x-0" aria-hidden="true" />
-                </span>
-                <ArrowRight
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </motion.a>
+                <a href={BOOK_HREF} className="link-quiet text-ink hover:text-gold-deep">
+                  Begin your story
+                  <ArrowRight className="h-4 w-4 link-arrow" strokeWidth={1.5} aria-hidden="true" />
+                </a>
+              </motion.div>
             </motion.div>
           </div>
 
-          {/* ════════════════════════════════════════════
-              RIGHT — Premium Portrait
-              ════════════════════════════════════════════ */}
+          {/* RIGHT — Cinematic clinic photograph */}
           <motion.div
-            initial={{ opacity: 0, scale: reduced ? 1 : 0.95, x: reduced ? 0 : 24 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            initial={{ opacity: 0, x: reduced ? 0 : 32 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: EASE_SMOOTH, delay: 0.15 }}
-            className="relative lg:h-[560px] xl:h-[640px]"
+            transition={{ duration: DUR.slower, ease: EASE, delay: 0.2 }}
+            className="lg:col-span-6 relative"
           >
-            {/* Gold rim glow */}
-            <div
-              className="absolute -inset-[3px] rounded-[2rem] bg-gradient-to-br from-gold-400/20 via-gold-500/10 to-gold-400/20 blur-[0.5px]"
-              aria-hidden="true"
-            />
+            {/* Offset frame */}
+            <div className="absolute -bottom-5 -right-5 hidden lg:block w-full h-full border border-gold/30" aria-hidden="true" />
 
-            {/* Image container */}
-            <motion.div
-              style={{ y: reduced ? 0 : imageY }}
-              className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-[0_32px_64px_-16px_rgb(10,17,32,0.15)] dark:shadow-[0_32px_64px_-16px_rgb(0,0,0,0.4)]"
-            >
-              <Image
-                src="/images/clinic.jpg"
-                alt="Thousand Smile Dental Clinic — a warm, modern treatment space designed for patient comfort and confidence"
-                fill
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                priority={false}
-                className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:scale-[1.02]"
-              />
-              {/* Warm light leak */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-gold-500/[0.03] via-transparent to-transparent" />
-              {/* Bottom blend */}
-              <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/20 to-transparent dark:from-navy-950/20" />
-            </motion.div>
+            <div className="image-frame vignette relative aspect-[4/5] lg:aspect-[4/5] bg-cream shadow-[0_40px_80px_-32px_rgba(18,16,15,0.35)]">
+              <motion.div style={{ y: reduced ? 0 : imageY }} className="absolute inset-0">
+                <Image
+                  src="/images/clinic.jpg"
+                  alt="The reception at Thousand Smile Dental Clinic — warm light, natural materials, calm hospitality"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 48vw"
+                  className="object-cover object-center"
+                />
+              </motion.div>
+
+              {/* Caption */}
+              <div className="absolute bottom-5 left-5">
+                <p className="text-[0.625rem] font-medium tracking-[0.22em] uppercase text-light drop-shadow-lg">
+                  Reception — Los Angeles
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -29,19 +29,15 @@ function Eyebrow({
     return (
       <span
         className={cn(
-          "inline-flex items-center gap-2.5 rounded-full",
-          "border border-gold-200/60 dark:border-gold-800/40",
-          "bg-gold-50/70 dark:bg-gold-950/25",
-          "px-4 py-1.5",
-          "text-[0.6875rem] sm:text-xs font-medium tracking-[0.14em] uppercase",
-          "text-gold-700 dark:text-gold-400",
-          "backdrop-blur-sm",
+          "inline-flex items-center gap-2.5",
+          "text-[0.6875rem] sm:text-xs font-medium tracking-[0.2em] uppercase",
+          "text-warmgray",
           className,
         )}
       >
         {icon && <span className="shrink-0 [&>svg]:h-3 [&>svg]:w-3">{icon}</span>}
         {!icon && (
-          <span className="h-1 w-1 rounded-full bg-gold-500 shrink-0" aria-hidden="true" />
+          <span className="h-1 w-1 rounded-full bg-gold shrink-0" aria-hidden="true" />
         )}
         {children}
       </span>
@@ -59,19 +55,15 @@ function Eyebrow({
         delay: 0.05,
       })}
       className={cn(
-        "inline-flex items-center gap-2.5 rounded-full",
-        "border border-gold-200/60 dark:border-gold-800/40",
-        "bg-gold-50/70 dark:bg-gold-950/25",
-        "px-4 py-1.5",
-        "text-[0.6875rem] sm:text-xs font-medium tracking-[0.14em] uppercase",
-        "text-gold-700 dark:text-gold-400",
-        "backdrop-blur-sm",
+        "inline-flex items-center gap-2.5",
+        "text-[0.6875rem] sm:text-xs font-medium tracking-[0.2em] uppercase",
+        "text-warmgray",
         className,
       )}
     >
       {icon && <span className="shrink-0 [&>svg]:h-3 [&>svg]:w-3">{icon}</span>}
       {!icon && (
-        <span className="h-1 w-1 rounded-full bg-gold-500 shrink-0" aria-hidden="true" />
+        <span className="h-1 w-1 rounded-full bg-gold shrink-0" aria-hidden="true" />
       )}
       {children}
     </motion.span>

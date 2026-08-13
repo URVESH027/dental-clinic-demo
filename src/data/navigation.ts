@@ -1,44 +1,44 @@
 export interface NavItem {
   label: string;
   href: string;
-  children?: NavItem[];
 }
 
 export const navItems: NavItem[] = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#philosophy" },
-  { label: "Treatments", href: "#services" },
+  { label: "Treatments", href: "#treatments" },
   { label: "Technology", href: "#technology" },
-  { label: "Doctors", href: "#doctors" },
-  { label: "Reviews", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Doctors", href: "#founder" },
+  { label: "Results", href: "#results" },
 ];
+
+export const BOOK_HREF = "#book";
 
 export const contactInfo = {
   phone: "(555) 123-4567",
   phoneHref: "tel:+15551234567",
+  whatsappHref: "https://wa.me/15551234567",
 };
 
 export const footerLinks = {
-  quickLinks: [
-    { label: "Home", href: "#home" },
-    { label: "About Us", href: "#philosophy" },
-    { label: "Services", href: "#services" },
-    { label: "Our Doctors", href: "#doctors" },
-    { label: "Smile Gallery", href: "#gallery" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Contact", href: "#contact" },
+  clinic: [
+    { label: "Our Philosophy", href: "#philosophy" },
+    { label: "The Clinic", href: "#clinic" },
+    { label: "Our Doctors", href: "#founder" },
+    { label: "Patient Stories", href: "#testimonials" },
   ],
-  services: [
-    { label: "Dental Implants", href: "#services" },
-    { label: "Root Canal Treatment", href: "#services" },
-    { label: "Teeth Whitening", href: "#services" },
-    { label: "Braces & Aligners", href: "#services" },
-    { label: "Smile Makeover", href: "#services" },
-    { label: "Pediatric Dentistry", href: "#services" },
-    { label: "Cosmetic Dentistry", href: "#services" },
-    { label: "Tooth Extraction", href: "#services" },
+  treatments: [
+    { label: "Smile Makeover", href: "#treatments" },
+    { label: "Dental Implants", href: "#treatments" },
+    { label: "Invisalign", href: "#treatments" },
+    { label: "Cosmetic Dentistry", href: "#treatments" },
+    { label: "Full Mouth Rehabilitation", href: "#treatments" },
+  ],
+  resources: [
+    { label: "Technology", href: "#technology" },
+    { label: "Results", href: "#results" },
+    { label: "Reviews", href: "#testimonials" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Book a Consultation", href: "#book" },
   ],
   contact: {
     address: "12345 Smile Boulevard, Suite 100\nLos Angeles, CA 90025",
@@ -59,5 +59,4 @@ export const footerLinks = {
   ],
 };
 
-// Export socialLinks as alias for social
 export const socialLinks = footerLinks.social;

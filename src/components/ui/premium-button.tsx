@@ -30,15 +30,15 @@ interface PremiumButtonProps
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-navy-950 dark:bg-ivory-50 text-ivory-50 dark:text-navy-950 shadow-[var(--shadow-lg)] hover:shadow-[var(--shadow-xl)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[var(--shadow-md)]",
-  gold: "bg-gradient-to-r from-gold-600 to-gold-700 text-ivory-50 shadow-[0_8px_30px_-5px_rgba(200,169,81,0.35)] hover:shadow-[0_14px_44px_-5px_rgba(200,169,81,0.45)] hover:-translate-y-0.5 active:translate-y-0",
-  navy: "bg-navy-900 dark:bg-navy-800 text-ivory-50 shadow-[var(--shadow-md)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 active:translate-y-0",
+    "bg-nearblack dark:bg-warmwhite text-warmwhite dark:text-nearblack shadow-[var(--shadow-lg)] hover:shadow-[var(--shadow-xl)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[var(--shadow-md)]",
+  gold: "bg-gradient-to-r from-gold to-gold-deep text-warmwhite shadow-[0_8px_30px_-5px_rgba(184,168,138,0.35)] hover:shadow-[0_14px_44px_-5px_rgba(184,168,138,0.45)] hover:-translate-y-0.5 active:translate-y-0",
+  navy: "bg-nearblack dark:bg-charcoal text-warmwhite shadow-[var(--shadow-md)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 active:translate-y-0",
   secondary:
-    "bg-gold-50 dark:bg-gold-950/30 text-gold-700 dark:text-gold-400 border border-gold-200/60 dark:border-gold-800/40 hover:bg-gold-100 dark:hover:bg-gold-950/50 hover:border-gold-300 dark:hover:border-gold-700",
-  ghost: "bg-transparent text-navy-600 dark:text-navy-300 hover:bg-navy-50 dark:hover:bg-navy-900 hover:text-navy-900 dark:hover:text-ivory-50",
+    "bg-gold-light/30 dark:bg-gold-deep/30 text-gold-deep dark:text-gold border border-gold-light/60 dark:border-gold-deep/40 hover:bg-gold-light/50 dark:hover:bg-gold-deep/50 hover:border-gold-light dark:hover:border-gold-deep",
+  ghost: "bg-transparent text-charcoal dark:text-warmgray hover:bg-warmwhite dark:hover:bg-nearblack hover:text-nearblack dark:hover:text-warmwhite",
   outline:
-    "bg-transparent text-navy-900 dark:text-ivory-50 border border-navy-200 dark:border-navy-700 hover:bg-navy-50 dark:hover:bg-navy-900 hover:border-navy-300 dark:hover:border-navy-600",
-  cta: "bg-gradient-to-r from-gold-600 to-gold-700 text-ivory-50 shadow-[var(--shadow-xl),var(--shadow-glow)] hover:shadow-[var(--shadow-2xl),var(--shadow-glow-lg)] hover:-translate-y-0.5 active:translate-y-0",
+    "bg-transparent text-nearblack dark:text-warmwhite border border-stone dark:border-charcoal hover:bg-warmwhite dark:hover:bg-nearblack hover:border-warmgray dark:hover:border-charcoal",
+  cta: "bg-gradient-to-r from-gold to-gold-deep text-warmwhite shadow-[var(--shadow-xl),var(--shadow-glow)] hover:shadow-[var(--shadow-2xl),var(--shadow-glow-lg)] hover:-translate-y-0.5 active:translate-y-0",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -69,7 +69,7 @@ const PremiumButton = React.forwardRef<HTMLButtonElement, PremiumButtonProps>(
         disabled={disabled || loading}
         className={cn(
           "group inline-flex items-center justify-center font-semibold whitespace-nowrap transition-all duration-300 select-none",
-          "focus-visible:outline-2 focus-visible:outline-gold-500 focus-visible:outline-offset-3",
+          "focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-3",
           "disabled:pointer-events-none disabled:opacity-50",
           variantClasses[variant],
           sizeClasses[size],

@@ -1,0 +1,92 @@
+
+> thousand-smile-dental@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.11 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.233.89:3000
+✓ Ready in 4.0s
+
+○ Compiling / ...
+ GET / 200 in 27.6s (next.js: 21.8s, application-code: 5.8s)
+ GET / 200 in 27.6s (next.js: 22.4s, application-code: 5.2s)
+ GET / 200 in 650ms (next.js: 121ms, application-code: 529ms)
+○ Compiling /privacy ...
+ GET /privacy 200 in 4.1s (next.js: 3.7s, application-code: 360ms)
+[browser] Encountered two children with the same key, `Certified`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+ GET / 200 in 3.3s (next.js: 1233ms, application-code: 2.0s)
+[browser] Encountered two children with the same key, `Certified`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 
+⨯ ./src/app/layout.tsx:6:1
+Module not found: Can't resolve '@/components/layout/FloatingControls'
+  [90m4 |[0m [36mimport[0m { [33mNavbar[0m } [36mfrom[0m [32m"@/components/layout/Navbar"[0m;
+  [90m5 |[0m [36mimport[0m { [33mFooter[0m } [36mfrom[0m [32m"@/components/layout/Footer"[0m;
+[31m[1m>[0m [90m6 |[0m [36mimport[0m { [33mFloatingControls[0m } [36mfrom[0m [32m"@/components/layout/FloatingControls"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m7 |[0m
+  [90m8 |[0m [36mconst[0m inter = [33mInter[0m({
+  [90m9 |[0m   subsets: [[32m"latin"[0m],
+
+Import map: aliased to relative './src/components/layout/FloatingControls' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:6:1
+Module not found: Can't resolve '@/components/layout/FloatingControls'
+  [90m4 |[0m [36mimport[0m { [33mNavbar[0m } [36mfrom[0m [32m"@/components/layout/Navbar"[0m;
+  [90m5 |[0m [36mimport[0m { [33mFooter[0m } [36mfrom[0m [32m"@/components/layout/Footer"[0m;
+[31m[1m>[0m [90m6 |[0m [36mimport[0m { [33mFloatingControls[0m } [36mfrom[0m [32m"@/components/layout/FloatingControls"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m7 |[0m
+  [90m8 |[0m [36mconst[0m inter = [33mInter[0m({
+  [90m9 |[0m   subsets: [[32m"latin"[0m],
+
+Import map: aliased to relative './src/components/layout/FloatingControls' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:6:1
+Module not found: Can't resolve '@/components/layout/FloatingControls'
+  [90m4 |[0m [36mimport[0m { [33mNavbar[0m } [36mfrom[0m [32m"@/components/layout/Navbar"[0m;
+  [90m5 |[0m [36mimport[0m { [33mFooter[0m } [36mfrom[0m [32m"@/components/layout/Footer"[0m;
+[31m[1m>[0m [90m6 |[0m [36mimport[0m { [33mFloatingControls[0m } [36mfrom[0m [32m"@/components/layout/FloatingControls"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m7 |[0m
+  [90m8 |[0m [36mconst[0m inter = [33mInter[0m({
+  [90m9 |[0m   subsets: [[32m"latin"[0m],
+
+Import map: aliased to relative './src/components/layout/FloatingControls' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:6:1
+Module not found: Can't resolve '@/components/layout/FloatingControls'
+  [90m4 |[0m [36mimport[0m { [33mNavbar[0m } [36mfrom[0m [32m"@/components/layout/Navbar"[0m;
+  [90m5 |[0m [36mimport[0m { [33mFooter[0m } [36mfrom[0m [32m"@/components/layout/Footer"[0m;
+[31m[1m>[0m [90m6 |[0m [36mimport[0m { [33mFloatingControls[0m } [36mfrom[0m [32m"@/components/layout/FloatingControls"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m7 |[0m
+  [90m8 |[0m [36mconst[0m inter = [33mInter[0m({
+  [90m9 |[0m   subsets: [[32m"latin"[0m],
+
+Import map: aliased to relative './src/components/layout/FloatingControls' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+✓ Finished writing to filesystem cache in 23.5s
+
+thread '<unnamed>' (23404) panicked at /rustc/59807616e1fa2540724bfbac14d7976d7e4a3860/library\std\src\thread\scoped.rs:206:46:
+failed to spawn thread: Os { code: 1450, kind: Uncategorized, message: "Insufficient system resources exist to complete the requested service." }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+✓ Finished writing to filesystem cache in 19.5s
+✓ Finished writing to filesystem cache in 26.7s
+✓ Finished writing to filesystem cache in 16.9s
+✓ Finished writing to filesystem cache in 15.2s
+[?25h

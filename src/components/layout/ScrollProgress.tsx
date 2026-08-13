@@ -28,7 +28,7 @@ export function ScrollProgress() {
   return (
     <motion.div
       style={{ scaleX, transformOrigin: "left" }}
-      className="fixed top-0 left-0 h-1 w-full bg-gradient-to-r from-gold-500 to-gold-700 z-50"
+      className="fixed top-0 left-0 h-[1px] w-full bg-gold z-50"
       role="progressbar"
       aria-valuenow={Math.round(progress * 100)}
       aria-valuemin={0}

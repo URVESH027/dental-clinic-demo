@@ -50,7 +50,7 @@ const PremiumCard = React.forwardRef<HTMLDivElement, PremiumCardProps>(
           variantClasses[variant],
           paddingClasses[padding],
           hover &&
-            "transition-all duration-400 hover:-translate-y-1 hover:shadow-[var(--shadow-xl)] hover:border-gold-300/50 dark:hover:border-gold-700/50",
+            "transition-all duration-400 hover:-translate-y-1 hover:shadow-[var(--shadow-xl)] hover:border-warmgray/50 dark:hover:border-warmgray/50",
           className,
         )}
         {...props}
@@ -86,7 +86,7 @@ function CardIcon({
   return (
     <div
       className={cn(
-        "flex h-10 w-10 items-center justify-center rounded-xl bg-gold-50 dark:bg-gold-950/30 text-gold-600 dark:text-gold-400 border border-gold-200/50 dark:border-gold-800/30",
+        "flex h-10 w-10 items-center justify-center rounded-xl bg-gold-light/30 dark:bg-gold-deep/30 text-gold dark:text-gold border border-gold-light/50 dark:border-gold-deep/30",
         className,
       )}
       {...props}
@@ -101,7 +101,7 @@ function CardTitle({
   return (
     <h3
       className={cn(
-        "text-lg font-semibold text-navy-900 dark:text-ivory-50 leading-snug",
+        "text-lg font-semibold text-nearblack dark:text-warmwhite leading-snug",
         className,
       )}
       {...props}
@@ -116,7 +116,7 @@ function CardDescription({
   return (
     <p
       className={cn(
-        "text-sm text-navy-500 dark:text-navy-400 leading-relaxed",
+        "text-sm text-warmgray dark:text-warmgray leading-relaxed",
         className,
       )}
       {...props}

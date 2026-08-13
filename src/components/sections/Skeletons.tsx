@@ -6,7 +6,7 @@ function SkeletonBlock({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "animate-pulse rounded-[var(--radius-xl)] bg-navy-100 dark:bg-navy-800/60",
+        "animate-pulse rounded-[var(--radius-xl)] bg-stone dark:bg-charcoal/60",
         className
       )}
       aria-hidden="true"
@@ -15,15 +15,15 @@ function SkeletonBlock({ className }: { className?: string }) {
 }
 
 function SkeletonSection({
-  bg = "bg-ivory-50 dark:bg-navy-900",
+  bg = "bg-warmwhite dark:bg-nearblack",
   children,
 }: {
   bg?: string;
   children: React.ReactNode;
 }) {
   return (
-    <div className={cn("section-padding-lg", bg)}>
-      <div className="container-custom">{children}</div>
+    <div className={cn("py-24 lg:py-40", bg)}>
+      <div className="container-editorial">{children}</div>
     </div>
   );
 }
@@ -35,15 +35,15 @@ function SkeletonSectionHeader() {
       <SkeletonBlock className="h-10 sm:h-12 w-full" />
       <SkeletonBlock className="h-8 sm:h-10 w-3/4" />
       <SkeletonBlock className="h-4 w-2/3" />
-      <div className="w-12 h-[2px] rounded-full bg-navy-200 dark:bg-navy-700" />
+      <div className="w-12 h-[2px] rounded-full bg-stone dark:bg-charcoal" />
     </div>
   );
 }
 
 export function HeroSkeleton() {
   return (
-    <div className="min-h-screen flex items-center bg-navy-50 dark:bg-navy-900">
-      <div className="container-custom py-24 sm:py-32 lg:py-40">
+    <div className="min-h-screen flex items-center bg-warmwhite dark:bg-nearblack">
+      <div className="container-editorial py-24 sm:py-32 lg:py-40">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="max-w-xl space-y-8">
             <SkeletonBlock className="h-4 w-48 rounded-full" />
@@ -66,7 +66,7 @@ export function HeroSkeleton() {
 
 export function PhilosophySkeleton() {
   return (
-    <SkeletonSection bg="bg-white dark:bg-navy-950">
+    <SkeletonSection bg="bg-white dark:bg-nearblack">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
         <div className="space-y-6">
           <SkeletonBlock className="h-4 w-32 rounded-full" />
@@ -92,10 +92,10 @@ export function PhilosophySkeleton() {
 
 export function JourneyTimelineSkeleton() {
   return (
-    <SkeletonSection bg="bg-ivory-50 dark:bg-navy-900">
+    <SkeletonSection bg="bg-warmwhite dark:bg-nearblack">
       <SkeletonSectionHeader />
       <div className="relative max-w-3xl mx-auto">
-        <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-navy-200 dark:bg-navy-700" />
+        <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-stone dark:bg-charcoal" />
         <div className="space-y-10">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex gap-6 sm:gap-8 pl-16 sm:pl-20">
@@ -116,7 +116,7 @@ export function JourneyTimelineSkeleton() {
 
 export function ServicesSkeleton() {
   return (
-    <SkeletonSection bg="bg-ivory-50 dark:bg-navy-900">
+    <SkeletonSection bg="bg-warmwhite dark:bg-nearblack">
       <SkeletonSectionHeader />
       <div className="max-w-[640px] lg:max-w-[720px] space-y-14 lg:space-y-16">
         {[...Array(6)].map((_, i) => (
@@ -132,13 +132,13 @@ export function ServicesSkeleton() {
               <SkeletonBlock className="h-7 w-48 rounded-[var(--radius-md)]" />
               <SkeletonBlock className="h-4 w-full" />
               <SkeletonBlock className="h-4 w-3/4" />
-              <SkeletonBlock className="h-px w-[60px] mt-5 bg-navy-200 dark:bg-navy-700" />
+              <SkeletonBlock className="h-px w-[60px] mt-5 bg-stone dark:bg-charcoal" />
             </div>
           </div>
         ))}
       </div>
       <div className="max-w-[640px] lg:max-w-[720px] mt-16 space-y-6">
-        <div className="h-px w-full bg-navy-200/60 dark:bg-navy-700/60 mb-8 sm:mb-10" aria-hidden="true" />
+        <div className="h-px w-full bg-stone/60 dark:bg-charcoal/60 mb-8 sm:mb-10" aria-hidden="true" />
         <SkeletonBlock className="h-5 w-72" />
         <SkeletonBlock className="h-12 w-56 rounded-full" />
       </div>
@@ -148,7 +148,7 @@ export function ServicesSkeleton() {
 
 export function AboutSkeleton() {
   return (
-    <SkeletonSection bg="bg-white dark:bg-navy-950">
+    <SkeletonSection bg="bg-white dark:bg-nearblack">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
         <div className="space-y-6">
           <SkeletonBlock className="h-4 w-40 rounded-full" />
@@ -185,7 +185,7 @@ export function AboutSkeleton() {
 
 export function DoctorsSkeleton() {
   return (
-    <SkeletonSection bg="bg-white dark:bg-navy-950">
+    <SkeletonSection bg="bg-white dark:bg-nearblack">
       <SkeletonSectionHeader />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         {[...Array(8)].map((_, i) => (
@@ -198,7 +198,7 @@ export function DoctorsSkeleton() {
 
 export function BeforeAfterSkeleton() {
   return (
-    <SkeletonSection bg="bg-ivory-50 dark:bg-navy-900">
+    <SkeletonSection bg="bg-warmwhite dark:bg-nearblack">
       <SkeletonSectionHeader />
       <SkeletonBlock className="aspect-[4/3] max-w-4xl mx-auto rounded-[var(--radius-card)]" />
     </SkeletonSection>
@@ -207,7 +207,7 @@ export function BeforeAfterSkeleton() {
 
 export function TestimonialsSkeleton() {
   return (
-    <SkeletonSection bg="bg-ivory-50 dark:bg-navy-900">
+    <SkeletonSection bg="bg-warmwhite dark:bg-nearblack">
       <SkeletonSectionHeader />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {[...Array(3)].map((_, i) => (
@@ -220,7 +220,7 @@ export function TestimonialsSkeleton() {
 
 export function WhyChooseUsSkeleton() {
   return (
-    <SkeletonSection bg="bg-white dark:bg-navy-950">
+    <SkeletonSection bg="bg-white dark:bg-nearblack">
       <SkeletonSectionHeader />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         {[...Array(8)].map((_, i) => (
@@ -233,7 +233,7 @@ export function WhyChooseUsSkeleton() {
 
 export function TechnologySkeleton() {
   return (
-    <SkeletonSection bg="bg-white dark:bg-navy-950">
+    <SkeletonSection bg="bg-white dark:bg-nearblack">
       <SkeletonSectionHeader />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {[...Array(12)].map((_, i) => (
@@ -246,7 +246,7 @@ export function TechnologySkeleton() {
 
 export function FAQSkeleton() {
   return (
-    <SkeletonSection bg="bg-white dark:bg-navy-950">
+    <SkeletonSection bg="bg-white dark:bg-nearblack">
       <SkeletonSectionHeader />
       <SkeletonBlock className="h-12 max-w-xl mx-auto rounded-[var(--radius-xl)]" />
       <div className="space-y-3 max-w-4xl mx-auto mt-8">
@@ -260,7 +260,7 @@ export function FAQSkeleton() {
 
 export function AppointmentSkeleton() {
   return (
-    <SkeletonSection bg="bg-ivory-50 dark:bg-navy-900">
+    <SkeletonSection bg="bg-warmwhite dark:bg-nearblack">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
         <div className="space-y-6">
           <SkeletonBlock className="h-4 w-32 rounded-full" />
@@ -284,7 +284,7 @@ export function AppointmentSkeleton() {
 
 export function ContactSkeleton() {
   return (
-    <SkeletonSection bg="bg-white dark:bg-navy-950">
+    <SkeletonSection bg="bg-white dark:bg-nearblack">
       <SkeletonSectionHeader />
       <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
         <div className="lg:col-span-2 space-y-4">

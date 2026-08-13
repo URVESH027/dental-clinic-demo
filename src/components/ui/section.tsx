@@ -31,8 +31,8 @@ const paddingClasses: Record<SectionPadding, string> = {
 
 const bgClasses: Record<SectionBackground, string> = {
   transparent: "",
-  ivory: "bg-ivory-50 dark:bg-navy-1000",
-  navy: "bg-navy-950 dark:bg-navy-1000",
+  ivory: "bg-warmwhite dark:bg-nearblack",
+  navy: "bg-nearblack dark:bg-nearblack",
   gradient: "bg-gradient-subtle dark:bg-gradient-subtle",
   "gradient-hero": "hero-section",
 };

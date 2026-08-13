@@ -8,268 +8,227 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import {
-  Calendar,
-  Phone,
-  ArrowRight,
-  Star,
-  ChevronDown,
-  Sparkles,
-} from "lucide-react";
-import { EASE_SMOOTH, DUR } from "@/lib/animations";
+import { ArrowRight } from "lucide-react";
+import { DUR } from "@/lib/animations";
+import { BOOK_HREF } from "@/data/navigation";
 
-/* ─────────────────────────────────────────────────────
-   Hero — Cinematic Portrait Studio Layout
-   ───────────────────────────────────────────────────── */
+const trustMetadata = [
+  { value: "15+", label: "Years" },
+  { value: "15K+", label: "Smiles" },
+  { value: "Board", label: "Certified" },
+  { value: "ISO", label: "Certified Clinic" },
+];
+
+const EASE = [0.25, 0.1, 0.25, 1] as const;
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const reduced = !!prefersReducedMotion;
 
-  /* Scroll-linked fade for cinematic depth */
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 48]);
 
   return (
     <section
       ref={sectionRef}
       id="home"
       aria-labelledby="hero-heading"
-      className="hero-section relative min-h-[100dvh] flex items-center overflow-hidden"
+      className="section-dark bg-noise relative min-h-[100svh] flex items-center overflow-hidden"
     >
-      {/* ── Cinematic Background ── */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-hero dark:bg-gradient-hero" />
-
-        {/* Gold spotlight — positioned behind portrait area */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_45%,rgba(200,169,81,0.07)_0%,transparent_55%)] dark:bg-[radial-gradient(ellipse_at_65%_45%,rgba(200,169,81,0.10)_0%,transparent_55%)]" />
-
-        {/* Subtle warm fill — left side */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(200,169,81,0.03)_0%,transparent_40%)] dark:bg-[radial-gradient(ellipse_at_20%_50%,rgba(200,169,81,0.04)_0%,transparent_40%)]" />
-
-        {/* Film grain */}
-        <div className="hero-noise absolute inset-0 opacity-[0.018] dark:opacity-[0.012]" />
+      {/* Ambient warm beam — sunlight entering a quiet room */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+      >
+        <div className="absolute top-[-20%] right-[8%] h-[70vh] w-px rotate-[24deg] bg-gradient-to-b from-transparent via-gold/25 to-transparent" />
+        <div className="absolute top-[10%] right-[18%] h-[120vh] w-[60vw] -rotate-[8deg] bg-[radial-gradient(ellipse_at_center,rgba(199,180,134,0.05)_0%,transparent_60%)]" />
       </div>
 
-      {/* ── Content ── */}
       <motion.div
         style={{ opacity: contentOpacity }}
-        className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-14 py-32 sm:py-36 lg:py-40 z-10"
+        className="container-editorial relative z-10 pt-32 pb-24 lg:pt-36 lg:pb-28"
       >
-        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-16 xl:gap-24 items-center">
+        <div className="grid lg:grid-cols-12 gap-14 lg:gap-10 items-center">
 
           {/* ════════════════════════════════════════════
-              LEFT — Editorial Typography
+              LEFT — Editorial Typography (7 cols)
               ════════════════════════════════════════════ */}
-          <div className="max-w-xl">
-
+          <div className="lg:col-span-7">
             {/* Eyebrow */}
             <motion.div
-              initial={{ opacity: 0, y: reduced ? 0 : 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.1 }}
-              className="mb-8"
-            >
-              <span className="inline-flex items-center gap-2 rounded-full border border-gold-200/60 dark:border-gold-800/40 bg-gold-50/70 dark:bg-gold-950/25 px-4 py-1.5 text-[0.6875rem] font-medium tracking-[0.14em] uppercase text-gold-700 dark:text-gold-400 backdrop-blur-sm">
-                <Sparkles className="h-3 w-3 text-gold-500" aria-hidden="true" />
-                Premium Dental Care
-              </span>
-            </motion.div>
-
-            {/* Headline — Two-line editorial reveal */}
-            <motion.h1
-              id="hero-heading"
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-[4.5rem] font-serif tracking-tight leading-[1.02] text-navy-950 dark:text-ivory-50 mb-8"
-              aria-label="Dentistry Beyond Expectations"
-            >
-              <motion.span
-                initial={{ opacity: 0, y: reduced ? 0 : 24, filter: reduced ? "none" : "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.9, ease: EASE_SMOOTH, delay: 0.2 }}
-                className="block"
-              >
-                Dentistry
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: reduced ? 0 : 24, filter: reduced ? "none" : "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.9, ease: EASE_SMOOTH, delay: 0.35 }}
-                className="block"
-              >
-                <span className="text-gold-600 dark:text-gold-400">Beyond</span>{" "}
-                Expectations
-              </motion.span>
-            </motion.h1>
-
-            {/* Description — Single elegant sentence */}
-            <motion.p
               initial={{ opacity: 0, y: reduced ? 0 : 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.6 }}
-              className="text-lg sm:text-xl text-navy-500 dark:text-navy-300 leading-relaxed max-w-lg mb-12"
+              transition={{ duration: DUR.moderate, ease: EASE, delay: 0.25 }}
+              className="flex items-center gap-4 mb-9"
             >
-              Board-certified specialists. Digital precision.
-              Uncompromising comfort — all under one roof.
+              <span className="h-px w-10 bg-gold" aria-hidden="true" />
+              <span className="eyebrow-text-gold">Precision Dentistry</span>
+            </motion.div>
+
+            {/* Headline — restrained, editorial */}
+            <h1
+              id="hero-heading"
+              className="font-serif font-normal text-hero leading-[1.02] text-light tracking-tight mb-10 max-w-[13ch]"
+            >
+              <motion.span
+                initial={reduced ? { opacity: 1 } : { opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: DUR.slow, ease: EASE, delay: 0.4 }}
+                className="block"
+              >
+                Precision
+              </motion.span>
+              <motion.span
+                initial={reduced ? { opacity: 1 } : { opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: DUR.slow, ease: EASE, delay: 0.55 }}
+                className="block"
+              >
+                designed
+              </motion.span>
+              <motion.span
+                initial={reduced ? { opacity: 1 } : { opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: DUR.slow, ease: EASE, delay: 0.7 }}
+                className="block text-gold"
+              >
+                around you.
+              </motion.span>
+            </h1>
+
+            {/* Supporting copy */}
+            <motion.p
+              initial={{ opacity: 0, y: reduced ? 0 : 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: DUR.slow, ease: EASE, delay: 0.9 }}
+              className="max-w-md text-base lg:text-lg text-light/60 leading-relaxed mb-12"
+            >
+              From a single consultation to a complete smile restoration —
+              every case at Thousand Smile is planned digitally, executed with
+              surgical precision, and designed around the life you live.
             </motion.p>
 
-            {/* CTAs — Primary gold + Secondary text */}
+            {/* CTA — one primary */}
             <motion.div
-              initial={{ opacity: 0, y: reduced ? 0 : 14 }}
+              initial={{ opacity: 0, y: reduced ? 0 : 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.75 }}
-              className="flex flex-col sm:flex-row items-start gap-5 mb-14"
+              transition={{ duration: DUR.slow, ease: EASE, delay: 1.05 }}
+              className="flex flex-wrap items-center gap-x-10 gap-y-6 mb-16"
             >
-              {/* Primary — Luxury gold gradient */}
-              <motion.a
-                href="#appointment"
-                whileHover={reduced ? {} : { y: -2, scale: 1.02 }}
-                whileTap={reduced ? {} : { scale: 0.98 }}
-                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-[0.9375rem] font-semibold bg-gradient-to-r from-gold-600 to-gold-700 text-ivory-50 shadow-[0_8px_30px_-5px_rgba(200,169,81,0.35)] transition-all duration-300 hover:shadow-[0_14px_44px_-5px_rgba(200,169,81,0.45)] focus-visible:outline-2 focus-visible:outline-gold-500 focus-visible:outline-offset-3"
-              >
-                <Calendar className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-                Book Your Visit
-                <span
-                  className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  aria-hidden="true"
-                />
-              </motion.a>
+              <a href={BOOK_HREF} className="btn-premium btn-gold text-light">
+                Book Consultation
+                <ArrowRight className="h-4 w-4 link-arrow" strokeWidth={1.75} aria-hidden="true" />
+              </a>
 
-              {/* Secondary — Glass pill with arrow */}
-              <motion.a
-                href="tel:+15551234567"
-                whileHover={reduced ? {} : { x: 4 }}
-                whileTap={reduced ? {} : { scale: 0.97 }}
-                className="group inline-flex items-center gap-3 rounded-full px-2 py-4 text-[0.9375rem] font-medium text-navy-600 dark:text-navy-300 hover:text-gold-700 dark:hover:text-gold-400 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-gold-500 focus-visible:outline-offset-3"
-              >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-navy-200 dark:border-navy-700 group-hover:border-gold-400 dark:group-hover:border-gold-600 group-hover:bg-gold-50 dark:group-hover:bg-gold-950/30 transition-all duration-300">
-                  <Phone className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
-                </span>
-                (555) 123-4567
-                <ArrowRight
-                  className="h-4 w-4 text-gold-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                  aria-hidden="true"
-                />
-              </motion.a>
+              <a href="#treatments" className="link-quiet text-light/75 hover:text-gold-light">
+                Explore Treatments
+                <ArrowRight className="h-4 w-4 link-arrow" strokeWidth={1.5} aria-hidden="true" />
+              </a>
             </motion.div>
 
-            {/* Trust — Single elegant line */}
+            {/* Trust metadata — quiet editorial row */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.95 }}
+              transition={{ duration: DUR.slow, ease: EASE, delay: 1.3 }}
+              className="flex flex-wrap items-stretch gap-x-10 gap-y-6 lg:gap-x-12"
+              aria-label="Clinic credentials"
             >
-              <div className="divider-premium mb-6" />
-              <div className="flex items-center gap-3">
-                <div className="flex gap-0.5" aria-label="5 out of 5 stars">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-3.5 w-3.5 fill-gold-400 text-gold-400"
-                      aria-hidden="true"
-                    />
-                  ))}
+              {trustMetadata.map((item, i) => (
+                <div
+                  key={item.label}
+                  className={i > 0 ? "flex items-center gap-10 lg:gap-12" : ""}
+                >
+                  {i > 0 && <span className="h-10 w-px bg-light/10 shrink-0" aria-hidden="true" />}
+                  <div>
+                    <p className="font-serif text-2xl text-light leading-none mb-1.5">{item.value}</p>
+                    <p className="text-[0.625rem] font-medium tracking-[0.22em] uppercase text-light/45">
+                      {item.label}
+                    </p>
+                  </div>
                 </div>
-                <span className="text-sm text-navy-400 dark:text-navy-500">
-                  <span className="font-semibold text-navy-700 dark:text-navy-200">
-                    4.9
-                  </span>{" "}
-                  · 15,000+ Smiles Transformed
-                </span>
-              </div>
+              ))}
             </motion.div>
           </div>
 
           {/* ════════════════════════════════════════════
-              RIGHT — Cinematic Portrait
+              RIGHT — Cinematic Photograph (5 cols)
               ════════════════════════════════════════════ */}
-          <div
-            className="relative lg:h-[600px] xl:h-[680px]"
-            aria-hidden="true"
+          <motion.div
+            initial={reduced ? { opacity: 1 } : { opacity: 0, scale: 1.04, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: DUR.cinematic, ease: EASE, delay: 0.5 }}
+            className="lg:col-span-5 relative xl:mr-[-3.5rem]"
           >
-            {/* Main portrait — slow cinematic reveal */}
-            <motion.div
-              initial={{ opacity: 0, scale: reduced ? 1 : 0.92, y: reduced ? 0 : 24 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: EASE_SMOOTH, delay: 0.15 }}
-              className="relative h-full w-full"
-            >
-              {/* Gold rim glow — soft light around frame */}
-              <div className="absolute -inset-[3px] rounded-[2rem] bg-gradient-to-br from-gold-400/25 via-gold-500/10 to-gold-400/25 blur-[0.5px]" />
+            {/* Offset gold frame — architectural edge treatment */}
+            <div
+              className="absolute -top-4 -left-4 hidden lg:block w-full h-full border border-gold/35"
+              aria-hidden="true"
+            />
 
-              {/* Portrait container */}
-              <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-[0_32px_64px_-16px_rgb(10,17,32,0.18)] dark:shadow-[0_32px_64px_-16px_rgb(0,0,0,0.45)]">
+            <div
+              className="image-frame vignette relative aspect-[16/10] lg:aspect-[4/5] xl:aspect-[16/10] bg-coal shadow-[0_48px_96px_-32px_rgba(0,0,0,0.65)]"
+            >
+              <motion.div style={{ scale: reduced ? 1 : imageScale, y: reduced ? 0 : imageY }} className="absolute inset-0">
                 <Image
                   src="/images/hero.jpg"
-                  alt="Thousand Smile Dental Clinic — a calm, modern treatment room designed for patient comfort"
+                  alt="A warm, modern treatment suite at Thousand Smile Dental Clinic — quiet, precise, and designed for comfort"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                   priority
-                  className="object-cover"
+                  className="object-cover object-center"
                 />
-                {/* Warm light leak */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-gold-500/[0.04] via-transparent to-transparent" />
-                {/* Bottom blend */}
-                <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-navy-50/30 to-transparent dark:from-navy-1000/30" />
-              </div>
-            </motion.div>
+              </motion.div>
 
-            {/* ── Floating Review Card ── */}
-            <motion.div
-              initial={{ opacity: 0, x: reduced ? 0 : 28, y: reduced ? 0 : 8 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 1.0 }}
-              className="absolute -left-2 sm:left-4 lg:-left-6 bottom-14 sm:bottom-16 lg:bottom-20 z-20"
-            >
-              <div className="glass-premium rounded-2xl px-5 py-3.5 shadow-[var(--shadow-floating)]">
-                <div className="flex items-center gap-3">
-                  <div className="flex gap-0.5" aria-label="5 out of 5 stars">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-3 w-3 fill-gold-400 text-gold-400"
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
-                  <div className="h-4 w-px bg-navy-200/60 dark:bg-navy-700/60" aria-hidden="true" />
-                  <div>
-                    <p className="text-[0.6875rem] font-semibold text-navy-900 dark:text-ivory-50 leading-tight">
-                      Google Reviews
-                    </p>
-                    <p className="text-[0.625rem] text-navy-500 dark:text-navy-400 leading-tight mt-0.5">
-                      4.9 out of 5.0
-                    </p>
-                  </div>
+              {/* Warm light treatment */}
+              <div
+                className="absolute inset-0 bg-gradient-to-tr from-gold/[0.06] via-transparent to-transparent mix-blend-overlay"
+                aria-hidden="true"
+              />
+
+              {/* Caption chip — quiet, editorial */}
+              <motion.div
+                initial={{ opacity: 0, y: reduced ? 0 : 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: DUR.slow, ease: EASE, delay: 1.4 }}
+                className="absolute bottom-5 left-5"
+              >
+                <div className="flex items-center gap-3 bg-ink/55 backdrop-blur-md border border-light/10 px-4 py-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold" aria-hidden="true" />
+                  <p className="text-[0.625rem] font-medium tracking-[0.2em] uppercase text-light/85 leading-relaxed">
+                    Private suites · Sterile precision
+                    <br />
+                    Open today until 7:00 PM
+                  </p>
                 </div>
-              </div>
-            </motion.div>
-          </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </motion.div>
 
-      {/* ── Scroll Indicator ── */}
+      {/* Scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 1.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+        transition={{ duration: DUR.slower, ease: EASE, delay: 2 }}
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3"
         aria-hidden="true"
       >
-        <span className="text-[0.625rem] font-medium tracking-[0.2em] uppercase text-navy-400 dark:text-navy-500">
+        <span className="text-[0.5625rem] font-medium tracking-[0.3em] uppercase text-light/40">
           Scroll
         </span>
-        <motion.div
-          animate={reduced ? {} : { y: [0, 6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center"
-        >
-          <div className="h-8 w-[1px] bg-gradient-to-b from-gold-400/60 to-transparent" />
-          <ChevronDown className="h-3.5 w-3.5 text-gold-500/70 -mt-0.5" />
-        </motion.div>
+        <motion.span
+          animate={reduced ? {} : { y: [0, 5, 0] }}
+          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+          className="block h-9 w-px bg-gradient-to-b from-gold/70 to-transparent"
+        />
       </motion.div>
     </section>
   );

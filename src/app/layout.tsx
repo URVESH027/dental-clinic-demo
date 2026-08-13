@@ -1,12 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-
-import { ScrollProgress } from "@/components/layout/ScrollProgress";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,27 +31,25 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://thousandsmiledental.com"),
   title: {
-    default: "Thousand Smile Dental Clinic | Advanced Dental Care for Every Generation",
+    default: "Thousand Smile Dental Clinic | Precision Designed Around You",
     template: "%s | Thousand Smile Dental Clinic",
   },
-  description: "Premier multispecialty dental clinic offering implants, cosmetic dentistry, orthodontics, pediatric care, and emergency services. Board-certified specialists, digital technology, same-day appointments.",
+  description:
+    "A precision dental studio in Los Angeles. Implants, cosmetic dentistry, orthodontics, full mouth rehabilitation — designed digitally, delivered by board-certified specialists.",
   keywords: [
     "dental clinic",
     "dental implants",
     "cosmetic dentistry",
     "orthodontics",
     "Invisalign",
-    "teeth whitening",
-    "root canal",
-    "pediatric dentist",
-    "emergency dental",
     "smile makeover",
-    "veneers",
-    "All-on-4",
+    "Digital Smile Design",
+    "emergency dental",
+    "veneer specialist",
+    "Full mouth rehab",
   ],
   authors: [{ name: "Thousand Smile Dental Clinic" }],
   creator: "Thousand Smile Dental Clinic",
-  publisher: "Thousand Smile Dental Clinic",
   robots: {
     index: true,
     follow: true,
@@ -75,42 +69,29 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://thousandsmiledental.com",
     siteName: "Thousand Smile Dental Clinic",
-    title: "Thousand Smile Dental Clinic | Creating Confident Smiles",
-    description: "Advanced dental care for every generation. Implants, cosmetic, orthodontics, pediatrics & more. Book your appointment today.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Thousand Smile Dental Clinic - Modern dental office",
-      },
-    ],
+    title: "Thousand Smile Dental Clinic | Precision Designed Around You",
+    description:
+      "A precision dental studio for implants, cosmetic dentistry and full mouth rehabilitation. Book a consultation today.",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Thousand Smile Dental Clinic" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Thousand Smile Dental Clinic",
-    description: "Creating confident smiles for every generation with advanced dental care.",
+    description: "Precision designed around you.",
     images: ["/og-image.jpg"],
     site: "@thousandsmile",
     creator: "@thousandsmile",
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png" },
-    ],
-  },
-  verification: {
-    google: "google-site-verification-code",
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    apple: [{ url: "/apple-touch-icon.png" }],
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a1120" },
+    { media: "(prefers-color-scheme: light)", color: "#F4F0E8" },
+    { media: "(prefers-color-scheme: dark)", color: "#12100F" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -126,7 +107,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Dentist",
     name: "Thousand Smile Dental Clinic",
-    description: "Premier multispecialty dental clinic offering comprehensive dental care including implants, cosmetic dentistry, orthodontics, and pediatric dentistry.",
+    description:
+      "Precision dental studio offering implants, cosmetic dentistry, orthodontics and full mouth rehabilitation.",
     url: "https://thousandsmiledental.com",
     logo: "https://thousandsmiledental.com/logo.png",
     image: "https://thousandsmiledental.com/clinic.jpg",
@@ -140,11 +122,7 @@ export default function RootLayout({
       postalCode: "90025",
       addressCountry: "US",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 34.0522,
-      longitude: -118.2437,
-    },
+    geo: { "@type": "GeoCoordinates", latitude: 34.0522, longitude: -118.2437 },
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -152,86 +130,38 @@ export default function RootLayout({
         opens: "07:00",
         closes: "19:00",
       },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Friday",
-        opens: "07:00",
-        closes: "16:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Saturday",
-        opens: "08:00",
-        closes: "14:00",
-      },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "07:00", closes: "16:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "08:00", closes: "14:00" },
     ],
     priceRange: "$$",
-    paymentAccepted: "Cash, Credit Card, Insurance, Financing",
     currenciesAccepted: "USD",
     areaServed: "Los Angeles, CA",
     medicalSpecialty: "Dentistry",
-    hasMap: "https://maps.google.com/?q=Thousand+Smile+Dental+Clinic",
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
       bestRating: "5",
       reviewCount: "847",
     },
-    review: [
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Jennifer Martinez" },
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        reviewBody: "Dr. Chen and her team transformed my smile with porcelain veneers. The Digital Smile Design preview was incredible — I knew exactly what to expect.",
-      },
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Amanda Chen" },
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        reviewBody: "As a teacher, I needed flexible scheduling for my Invisalign treatment. The team worked around my school hours perfectly. My teeth are straight and I couldn't be happier.",
-      },
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Marcus Johnson" },
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        reviewBody: "Had a dental emergency on a Saturday morning. They got me in within an hour and the root canal was completely painless. Saved my tooth and my weekend.",
-      },
-    ],
-    sameAs: [
-      "https://facebook.com/thousandsmiledental",
-      "https://instagram.com/thousandsmiledental",
-      "https://youtube.com/@thousandsmiledental",
-      "https://linkedin.com/company/thousandsmiledental",
-    ],
   };
 
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} antialiased`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        ></script>
+        />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-screen">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <ThemeProvider defaultTheme="system" enableSystem>
-          <TooltipProvider>
-            <ScrollProgress />
-            <Navbar />
-            <main className="flex-1" id="main-content">
-              {children}
-            </main>
-            <Footer />
-          </TooltipProvider>
-        </ThemeProvider>
+        <Navbar />
+        <main id="main-content">{children}</main>
+        <Footer />
       </body>
     </html>
   );
