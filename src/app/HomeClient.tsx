@@ -25,16 +25,20 @@ const Clinic = dynamic(() => import("@/components/sections/Clinic").then(mod => 
   loading: () => <AboutSkeleton />,
 });
 
+const EditorialMoment = dynamic(() => import("@/components/sections/EditorialMoment").then(mod => mod.EditorialMoment), {
+  loading: () => <AboutSkeleton />,
+});
+
 const Treatments = dynamic(() => import("@/components/sections/Treatments").then(mod => mod.Treatments), {
+  loading: () => <ServicesSkeleton />,
+});
+
+const Technology = dynamic(() => import("@/components/sections/Technology").then(mod => mod.Technology), {
   loading: () => <ServicesSkeleton />,
 });
 
 const MeetFounder = dynamic(() => import("@/components/sections/MeetFounder").then(mod => mod.MeetFounder), {
   loading: () => <AboutSkeleton />,
-});
-
-const Technology = dynamic(() => import("@/components/sections/Technology").then(mod => mod.Technology), {
-  loading: () => <ServicesSkeleton />,
 });
 
 const JourneyTimeline = dynamic(() => import("@/components/sections/JourneyTimeline").then(mod => mod.JourneyTimeline), {
@@ -49,11 +53,11 @@ const Testimonials = dynamic(() => import("@/components/sections/Testimonials").
   loading: () => <ServicesSkeleton />,
 });
 
-const FAQ = dynamic(() => import("@/components/sections/FAQ").then(mod => mod.FAQ), {
+const Certifications = dynamic(() => import("@/components/sections/Certifications").then(mod => mod.Certifications), {
   loading: () => <AboutSkeleton />,
 });
 
-const Certifications = dynamic(() => import("@/components/sections/Certifications").then(mod => mod.Certifications), {
+const FAQ = dynamic(() => import("@/components/sections/FAQ").then(mod => mod.FAQ), {
   loading: () => <AboutSkeleton />,
 });
 
@@ -74,14 +78,17 @@ export default function HomeClient() {
       <Suspense fallback={<AboutSkeleton />}>
         <Clinic />
       </Suspense>
+      <Suspense fallback={<AboutSkeleton />}>
+        <EditorialMoment />
+      </Suspense>
       <Suspense fallback={<ServicesSkeleton />}>
         <Treatments />
       </Suspense>
-      <Suspense fallback={<AboutSkeleton />}>
-        <MeetFounder />
-      </Suspense>
       <Suspense fallback={<ServicesSkeleton />}>
         <Technology />
+      </Suspense>
+      <Suspense fallback={<AboutSkeleton />}>
+        <MeetFounder />
       </Suspense>
       <Suspense fallback={<AboutSkeleton />}>
         <JourneyTimeline />
@@ -93,10 +100,10 @@ export default function HomeClient() {
         <Testimonials />
       </Suspense>
       <Suspense fallback={<AboutSkeleton />}>
-        <FAQ />
+        <Certifications />
       </Suspense>
       <Suspense fallback={<AboutSkeleton />}>
-        <Certifications />
+        <FAQ />
       </Suspense>
       <Suspense fallback={<AppointmentSkeleton />}>
         <FinalCTA />

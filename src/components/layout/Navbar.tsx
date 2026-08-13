@@ -163,9 +163,10 @@ export function Navbar() {
             "transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]",
             "flex items-center justify-between",
             "mx-auto max-w-[80rem]",
+            "h-16 lg:h-[72px]",
             isScrolled
-              ? "h-16 bg-ink/85 backdrop-blur-md border-b border-light/10 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.5)]"
-              : "h-[72px] border-b border-transparent bg-transparent",
+              ? "bg-ink/95 backdrop-blur-md border-b border-light/10 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.5)]"
+              : "bg-ink/75 backdrop-blur-md border-b border-light/[0.07]",
           )}
         >
           <div className="container-editorial flex items-center justify-between gap-6">
@@ -209,7 +210,9 @@ export function Navbar() {
                         "group relative py-2 text-[0.6875rem] font-medium tracking-[0.2em] uppercase",
                         "transition-colors duration-500",
                         "focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4",
-                        isActive ? "text-gold" : "text-light/70 hover:text-light",
+                        isActive
+                          ? "text-gold!"
+                          : "text-white! hover:text-[#F4F0E8]!",
                       )}
                     >
                       {item.label}
@@ -230,7 +233,7 @@ export function Navbar() {
             <div className="hidden lg:flex items-center gap-8">
               <a
                 href={contactInfo.phoneHref}
-                className="hidden xl:inline-flex items-center gap-2.5 text-[0.8125rem] font-medium text-light/70 hover:text-gold-light transition-colors duration-500 focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2"
+                className="hidden xl:inline-flex items-center gap-2.5 text-[0.8125rem] font-medium text-[#F4F0E8]/65 hover:text-gold-light transition-colors duration-500 focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2"
               >
                 <Phone className="h-3.5 w-3.5" strokeWidth={1.5} aria-hidden="true" />
                 {contactInfo.phone}
@@ -319,7 +322,7 @@ export function Navbar() {
               aria-label="Mobile navigation"
             >
               {/* Header */}
-              <div className="container-editorial flex items-center justify-between h-[72px] shrink-0">
+              <div className="container-editorial flex items-center justify-between h-16 lg:h-[72px] shrink-0">
                 <Link
                   href="#home"
                   onClick={closeDrawer}

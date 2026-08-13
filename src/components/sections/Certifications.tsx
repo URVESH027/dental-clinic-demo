@@ -1,41 +1,30 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { BadgeCheck, Shield, Award, GraduationCap } from "lucide-react";
 import { DUR } from "@/lib/animations";
 
 const EASE = [0.25, 0.1, 0.25, 1] as const;
 
 const credentials = [
   {
-    icon: BadgeCheck,
     name: "ISO 9001:2015",
     detail: "Quality management — independently audited every year.",
   },
   {
-    icon: Shield,
     name: "Board-Certified Specialists",
-    detail: "All eight disciplines led by certified specialists.",
+    detail: "Every discipline led by certified specialists.",
   },
   {
-    icon: Award,
     name: "AACD Member",
     detail: "American Academy of Cosmetic Dentistry.",
   },
   {
-    icon: GraduationCap,
     name: "Invisalign Diamond Plus",
     detail: "Top 1% of providers worldwide.",
   },
   {
-    icon: Shield,
     name: "ICOI Fellow",
     detail: "International Congress of Oral Implantologists.",
-  },
-  {
-    icon: BadgeCheck,
-    name: "HIPAA / OSHA Compliant",
-    detail: "Privacy and safety, verified and documented.",
   },
 ];
 
@@ -45,7 +34,7 @@ export function Certifications() {
   return (
     <section
       id="certifications"
-      className="section-coal bg-noise relative py-24 lg:py-40"
+      className="section-coal bg-noise relative py-28 lg:py-44"
       aria-labelledby="certifications-heading"
     >
       <div className="container-editorial relative z-10">
@@ -84,54 +73,47 @@ export function Certifications() {
             className="lg:col-span-5 max-w-sm text-light/55 text-base leading-relaxed lg:pb-2"
           >
             Trust is earned, not claimed. Every certification here is
-            independently verified — and a quiet promise about how we work.
+            independently verified.
           </motion.p>
         </div>
 
-        {/* ── Credential registry — annual report style ── */}
-        <div className="grid md:grid-cols-2 gap-x-16 gap-y-0">
-          {credentials.map((credential, i) => {
-            const Icon = credential.icon;
-            return (
-              <motion.div
-                key={credential.name}
-                initial={{ opacity: 0, y: reduced ? 0 : 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: DUR.moderate, ease: EASE, delay: (i % 2) * 0.1 }}
-                className="group flex items-center gap-7 border-t border-light/12 py-8 lg:py-9 transition-colors duration-500 hover:bg-light/[0.02]"
-              >
-                <span
-                  className="hidden sm:flex h-3.5 w-3.5 items-center justify-center text-gold/70 transition-all duration-500 group-hover:text-gold group-hover:scale-110"
-                  aria-hidden="true"
-                >
-                  <Icon className="h-4 w-4" strokeWidth={1.5} />
-                </span>
-                <div>
-                  <p className="font-serif text-2xl lg:text-3xl tracking-tight text-light group-hover:text-gold-light transition-colors duration-500">
-                    {credential.name}
-                  </p>
-                  <p className="mt-1.5 text-sm text-light/45 max-w-md">
-                    {credential.detail}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* ── Quiet statement ── */}
-        <motion.p
+        {/* ── Credential registry — institutional, numbered ── */}
+        <motion.ul
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: DUR.slower, ease: EASE, delay: 0.2 }}
-          className="mt-14 lg:mt-16 max-w-xl font-serif text-lg lg:text-xl italic text-light/40 border-l border-gold pl-6"
+          transition={{ duration: DUR.slow, ease: EASE }}
+          className="border-t border-light/12"
+          role="list"
+          aria-label="Certifications and credentials"
         >
-          Recognition matters because it reflects the standards we hold
-          ourselves to every day — but the trust of our patients remains
-          our greatest achievement.
-        </motion.p>
+          {credentials.map((credential, i) => (
+            <motion.li
+              key={credential.name}
+              initial={{ opacity: 0, y: reduced ? 0 : 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: DUR.moderate, ease: EASE, delay: 0.05 + i * 0.06 }}
+            >
+              <div className="group flex items-baseline gap-6 lg:gap-12 py-7 lg:py-8 border-b border-light/12 transition-colors duration-500 hover:bg-light/[0.02]">
+                <span
+                  className="font-serif text-xl lg:text-2xl text-gold/70 group-hover:text-gold transition-colors duration-500 tabular-nums shrink-0"
+                  aria-hidden="true"
+                >
+                  0{i + 1}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <p className="font-serif text-2xl lg:text-3xl tracking-tight text-light group-hover:text-gold-light transition-colors duration-500">
+                    {credential.name}
+                  </p>
+                  <p className="mt-1 text-sm text-light/45">
+                    {credential.detail}
+                  </p>
+                </div>
+              </div>
+            </motion.li>
+          ))}
+        </motion.ul>
       </div>
     </section>
   );

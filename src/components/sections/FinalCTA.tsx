@@ -4,14 +4,14 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Phone, ArrowRight } from "lucide-react";
 import { DUR } from "@/lib/animations";
-import { contactInfo } from "@/data/navigation";
+import { BOOK_HREF, contactInfo } from "@/data/navigation";
 
 const EASE = [0.25, 0.1, 0.25, 1] as const;
 
 const trustMetadata = [
   { value: "Board-Certified Specialists", detail: "in every discipline" },
-  { value: "15,000+ Patients", detail: "treated since 2004" },
-  { value: "4.9 Google Rating", detail: "hundreds of reviews" },
+  { value: "15+ Years of Care", detail: "15,000+ smiles" },
+  { value: "4.9 Google Rating", detail: "verified reviews" },
 ];
 
 export function FinalCTA() {
@@ -63,7 +63,7 @@ export function FinalCTA() {
             transition={{ duration: DUR.slower, ease: EASE, delay: 0.1 }}
             className="font-serif text-5xl lg:text-7xl leading-[1.02] tracking-tight text-light"
           >
-            Your healthiest smile
+            Your next smile
             <span className="block text-gold italic">
               starts with one conversation.
             </span>
@@ -77,7 +77,7 @@ export function FinalCTA() {
             transition={{ duration: DUR.slow, ease: EASE, delay: 0.3 }}
             className="mt-11 flex flex-wrap items-center gap-x-10 gap-y-6"
           >
-            <a href={contactInfo.phoneHref} className="btn-premium btn-gold text-light">
+            <a href={BOOK_HREF} className="btn-premium btn-gold text-light">
               Book Your Consultation
               <ArrowRight className="h-4 w-4 link-arrow" strokeWidth={1.75} aria-hidden="true" />
             </a>

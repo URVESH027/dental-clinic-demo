@@ -16,7 +16,6 @@ const trustMetadata = [
   { value: "15+", label: "Years" },
   { value: "15K+", label: "Smiles" },
   { value: "Board", label: "Certified" },
-  { value: "ISO", label: "Certified Clinic" },
 ];
 
 const EASE = [0.25, 0.1, 0.25, 1] as const;
@@ -31,35 +30,32 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
   const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 48]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 32]);
 
   return (
     <section
       ref={sectionRef}
       id="home"
       aria-labelledby="hero-heading"
-      className="section-dark bg-noise relative min-h-[100svh] flex items-center overflow-hidden"
+      className="section-dark bg-noise relative flex min-h-[100svh] items-start overflow-hidden lg:items-center"
     >
       {/* Ambient warm beam — sunlight entering a quiet room */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-      >
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-[-20%] right-[8%] h-[70vh] w-px rotate-[24deg] bg-gradient-to-b from-transparent via-gold/25 to-transparent" />
         <div className="absolute top-[10%] right-[18%] h-[120vh] w-[60vw] -rotate-[8deg] bg-[radial-gradient(ellipse_at_center,rgba(199,180,134,0.05)_0%,transparent_60%)]" />
       </div>
 
       <motion.div
         style={{ opacity: contentOpacity }}
-        className="container-editorial relative z-10 pt-32 pb-24 lg:pt-36 lg:pb-28"
+        className="container-editorial relative z-10 pt-36 pb-20 lg:pt-40 lg:pb-28"
       >
-        <div className="grid lg:grid-cols-12 gap-14 lg:gap-10 items-center">
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-10 items-center">
 
           {/* ════════════════════════════════════════════
-              LEFT — Editorial Typography (7 cols)
+              LEFT — Editorial Typography (5 cols)
               ════════════════════════════════════════════ */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-5">
             {/* Eyebrow */}
             <motion.div
               initial={{ opacity: 0, y: reduced ? 0 : 14 }}
@@ -102,24 +98,23 @@ export function Hero() {
               </motion.span>
             </h1>
 
-            {/* Supporting copy */}
+            {/* Supporting copy — one sentence */}
             <motion.p
               initial={{ opacity: 0, y: reduced ? 0 : 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: DUR.slow, ease: EASE, delay: 0.9 }}
               className="max-w-md text-base lg:text-lg text-light/60 leading-relaxed mb-12"
             >
-              From a single consultation to a complete smile restoration —
-              every case at Thousand Smile is planned digitally, executed with
-              surgical precision, and designed around the life you live.
+              Every case is planned digitally, executed with surgical
+              precision, and designed around the life you live.
             </motion.p>
 
-            {/* CTA — one primary */}
+            {/* CTA — one primary, one quiet */}
             <motion.div
               initial={{ opacity: 0, y: reduced ? 0 : 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: DUR.slow, ease: EASE, delay: 1.05 }}
-              className="flex flex-wrap items-center gap-x-10 gap-y-6 mb-16"
+              className="flex flex-wrap items-center gap-x-10 gap-y-6 mb-14"
             >
               <a href={BOOK_HREF} className="btn-premium btn-gold text-light">
                 Book Consultation
@@ -137,14 +132,11 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: DUR.slow, ease: EASE, delay: 1.3 }}
-              className="flex flex-wrap items-stretch gap-x-10 gap-y-6 lg:gap-x-12"
+              className="flex flex-wrap items-stretch gap-x-10 gap-y-6"
               aria-label="Clinic credentials"
             >
               {trustMetadata.map((item, i) => (
-                <div
-                  key={item.label}
-                  className={i > 0 ? "flex items-center gap-10 lg:gap-12" : ""}
-                >
+                <div key={item.label} className="flex items-center gap-10">
                   {i > 0 && <span className="h-10 w-px bg-light/10 shrink-0" aria-hidden="true" />}
                   <div>
                     <p className="font-serif text-2xl text-light leading-none mb-1.5">{item.value}</p>
@@ -158,29 +150,27 @@ export function Hero() {
           </div>
 
           {/* ════════════════════════════════════════════
-              RIGHT — Cinematic Photograph (5 cols)
+              RIGHT — Cinematic Photograph (7 cols, dominant)
               ════════════════════════════════════════════ */}
           <motion.div
             initial={reduced ? { opacity: 1 } : { opacity: 0, scale: 1.04, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: DUR.cinematic, ease: EASE, delay: 0.5 }}
-            className="lg:col-span-5 relative xl:mr-[-3.5rem]"
+            className="lg:col-span-7 relative xl:mr-[-3.5rem]"
           >
             {/* Offset gold frame — architectural edge treatment */}
             <div
-              className="absolute -top-4 -left-4 hidden lg:block w-full h-full border border-gold/35"
+              className="absolute -top-4 -left-4 hidden lg:block w-full h-full border border-gold/30"
               aria-hidden="true"
             />
 
-            <div
-              className="image-frame vignette relative aspect-[16/10] lg:aspect-[4/5] xl:aspect-[16/10] bg-coal shadow-[0_48px_96px_-32px_rgba(0,0,0,0.65)]"
-            >
+            <div className="image-frame vignette relative aspect-[4/3] lg:aspect-[16/11] bg-coal shadow-[0_48px_96px_-32px_rgba(0,0,0,0.65)]">
               <motion.div style={{ scale: reduced ? 1 : imageScale, y: reduced ? 0 : imageY }} className="absolute inset-0">
                 <Image
                   src="/images/hero.jpg"
                   alt="A warm, modern treatment suite at Thousand Smile Dental Clinic — quiet, precise, and designed for comfort"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  sizes="(max-width: 1024px) 100vw, 58vw"
                   priority
                   className="object-cover object-center"
                 />
@@ -191,23 +181,6 @@ export function Hero() {
                 className="absolute inset-0 bg-gradient-to-tr from-gold/[0.06] via-transparent to-transparent mix-blend-overlay"
                 aria-hidden="true"
               />
-
-              {/* Caption chip — quiet, editorial */}
-              <motion.div
-                initial={{ opacity: 0, y: reduced ? 0 : 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: DUR.slow, ease: EASE, delay: 1.4 }}
-                className="absolute bottom-5 left-5"
-              >
-                <div className="flex items-center gap-3 bg-ink/55 backdrop-blur-md border border-light/10 px-4 py-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gold" aria-hidden="true" />
-                  <p className="text-[0.625rem] font-medium tracking-[0.2em] uppercase text-light/85 leading-relaxed">
-                    Private suites · Sterile precision
-                    <br />
-                    Open today until 7:00 PM
-                  </p>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -218,7 +191,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: DUR.slower, ease: EASE, delay: 2 }}
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3"
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 hidden flex-col items-center gap-3 lg:flex"
         aria-hidden="true"
       >
         <span className="text-[0.5625rem] font-medium tracking-[0.3em] uppercase text-light/40">

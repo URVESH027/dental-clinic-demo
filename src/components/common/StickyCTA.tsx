@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Phone, Calendar } from "lucide-react";
+import { Phone } from "lucide-react";
 import { EASE_SMOOTH } from "@/lib/animations";
 import { BOOK_HREF, contactInfo } from "@/data/navigation";
 
@@ -51,12 +51,11 @@ export function StickyCTA() {
             className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-ink/95 backdrop-blur-lg border-t border-light/10 pb-[env(safe-area-inset-bottom)]"
             aria-label="Quick contact"
           >
-            <div className="flex items-stretch gap-2 p-3 max-w-lg mx-auto">
+            <div className="flex items-stretch gap-2 p-2 max-w-lg mx-auto">
               <a
                 href={BOOK_HREF}
-                className="flex-1 flex items-center justify-center gap-2 bg-gold text-ink py-3.5 text-[0.75rem] font-medium tracking-[0.14em] uppercase"
+                className="flex-1 flex items-center justify-center gap-2 bg-gold text-ink py-2.5 text-[0.75rem] font-medium tracking-[0.14em] uppercase"
               >
-                <Calendar className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
                 Book Consultation
               </a>
               <a

@@ -79,10 +79,7 @@ export function JourneyTimeline() {
             transition={{ duration: DUR.slow, ease: EASE, delay: 0.1 }}
             className="font-serif text-5xl lg:text-6xl leading-[1.04] tracking-tight text-ink"
           >
-            A calm path
-            <span className="block text-gold-deep italic">
-              to your new smile.
-            </span>
+            A calm path to your new smile.
           </motion.h2>
 
           <motion.p
@@ -122,16 +119,6 @@ export function JourneyTimeline() {
                 className="group"
               >
                 <div className="flex items-baseline gap-6 lg:gap-10 py-8 lg:py-9 border-b border-stone relative transition-colors duration-500 hover:bg-ink/[0.025]">
-                  {/* Gold node on the line */}
-                  <motion.span
-                    initial={{ scale: reduced ? 1 : 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: DUR.moderate, ease: EASE, delay: 0.15 }}
-                    className="hidden lg:block absolute -left-4 top-1/2 -translate-y-1/2 h-2 w-2 rounded-full bg-gold shadow-[0_0_0_4px_rgba(199,180,134,0.15)]"
-                    aria-hidden="true"
-                  />
-
                   <span
                     className="font-serif text-3xl lg:text-5xl text-warmgray/50 group-hover:text-gold-deep transition-colors duration-700 tabular-nums shrink-0"
                     aria-hidden="true"
@@ -147,11 +134,6 @@ export function JourneyTimeline() {
                       {step.description}
                     </p>
                   </div>
-
-                  {/* Step index metadata — quiet */}
-                  <span className="hidden sm:block text-[0.625rem] font-medium tracking-[0.22em] uppercase text-warmgray/60">
-                    Step
-                  </span>
                 </div>
               </motion.li>
             ))}

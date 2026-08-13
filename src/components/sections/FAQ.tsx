@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useState, useCallback } from "react";
-import { Plus } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 import { DUR } from "@/lib/animations";
 
 const EASE = [0.25, 0.1, 0.25, 1] as const;
@@ -89,8 +89,7 @@ export function FAQ() {
               transition={{ duration: DUR.slow, ease: EASE, delay: 0.1 }}
               className="font-serif text-4xl lg:text-5xl leading-[1.08] tracking-tight text-ink"
             >
-              Questions,
-              <span className="block text-gold-deep italic">answered plainly.</span>
+              Questions, answered plainly.
             </motion.h2>
 
             <motion.p
@@ -133,8 +132,6 @@ export function FAQ() {
                         {faq.q}
                       </span>
                       <motion.span
-                        animate={{ rotate: isOpen ? 45 : 0 }}
-                        transition={{ duration: 0.3, ease: EASE }}
                         className={`flex h-8 w-8 shrink-0 items-center justify-center border transition-colors duration-500 ${
                           isOpen
                             ? "border-gold text-gold-deep"
@@ -142,7 +139,11 @@ export function FAQ() {
                         }`}
                         aria-hidden="true"
                       >
-                        <Plus className="h-4 w-4" strokeWidth={1.5} />
+                        {isOpen ? (
+                          <Minus className="h-4 w-4" strokeWidth={1.5} />
+                        ) : (
+                          <Plus className="h-4 w-4" strokeWidth={1.5} />
+                        )}
                       </motion.span>
                     </button>
                   </h3>

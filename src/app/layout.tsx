@@ -72,19 +72,18 @@ export const metadata: Metadata = {
     title: "Thousand Smile Dental Clinic | Precision Designed Around You",
     description:
       "A precision dental studio for implants, cosmetic dentistry and full mouth rehabilitation. Book a consultation today.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Thousand Smile Dental Clinic" }],
+    images: [{ url: "/images/hero.jpg", width: 1200, height: 800, alt: "Thousand Smile Dental Clinic" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Thousand Smile Dental Clinic",
     description: "Precision designed around you.",
-    images: ["/og-image.jpg"],
+    images: ["/images/hero.jpg"],
     site: "@thousandsmile",
     creator: "@thousandsmile",
   },
   icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }],
-    apple: [{ url: "/apple-touch-icon.png" }],
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
 };
 
@@ -110,8 +109,8 @@ export default function RootLayout({
     description:
       "Precision dental studio offering implants, cosmetic dentistry, orthodontics and full mouth rehabilitation.",
     url: "https://thousandsmiledental.com",
-    logo: "https://thousandsmiledental.com/logo.png",
-    image: "https://thousandsmiledental.com/clinic.jpg",
+    logo: "https://thousandsmiledental.com/favicon.svg",
+    image: "https://thousandsmiledental.com/images/hero.jpg",
     telephone: "+15551234567",
     email: "smile@thousandsmile.com",
     address: {

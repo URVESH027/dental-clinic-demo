@@ -22,7 +22,7 @@
   --color-cream: #EDE8DC;        /* soft cream — secondary light */
   --color-light: #F7F4ED;        /* primary light text on dark */
   --color-stone: #E2DCD1;        /* hairlines & neutrals on light */
-  --color-warmgray: #8E8A83;     /* muted text */
+  --color-warmgray: #8B877E;     /* muted text */
 
   /* Gold — accent only */
   --color-gold: #C7B486;         /* primary gold */
@@ -244,6 +244,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
+  scroll-padding-bottom: 64px;
   -webkit-text-size-adjust: 100%;
 }
 

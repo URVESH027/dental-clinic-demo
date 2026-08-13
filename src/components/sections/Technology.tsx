@@ -29,11 +29,11 @@ const workflow = [
   },
 ];
 
-const toolkit = [
-  { name: "CBCT Imaging", value: "0.2mm", detail: "3D accuracy" },
-  { name: "iTero Scan", value: "60s", detail: "digital impressions" },
-  { name: "CEREC CAD/CAM", value: "1 visit", detail: "same-day crowns" },
-  { name: "AI-Assisted Planning", value: "100%", detail: "designed in 3D first" },
+const metrics = [
+  { value: "0.2mm", name: "CBCT 3D accuracy" },
+  { value: "60s", name: "iTero digital scan" },
+  { value: "1 visit", name: "CEREC same-day crowns" },
+  { value: "100%", name: "Designed in 3D first" },
 ];
 
 export function Technology() {
@@ -42,7 +42,7 @@ export function Technology() {
   return (
     <section
       id="technology"
-      className="section-light relative py-24 lg:py-40"
+      className="section-light relative py-28 lg:py-44"
       aria-labelledby="technology-heading"
     >
       <div className="container-editorial">
@@ -68,8 +68,7 @@ export function Technology() {
               transition={{ duration: DUR.slow, ease: EASE, delay: 0.1 }}
               className="font-serif text-5xl lg:text-6xl leading-[1.04] tracking-tight text-ink"
             >
-              See your smile
-              <span className="block text-gold-deep italic">before treatment.</span>
+              See your smile before treatment.
             </motion.h2>
           </div>
 
@@ -81,13 +80,14 @@ export function Technology() {
             className="lg:col-span-5 max-w-sm text-warmgray text-base leading-relaxed lg:pb-2"
           >
             Every case begins as a digital blueprint. You review the design,
-            we refine it together, and only then does treatment begin —
-            with nothing left to guesswork.
+            we refine it together — nothing left to guesswork.
           </motion.p>
         </div>
 
-        {/* ── Main: Digital Smile Design interaction ── */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center mb-20 lg:mb-28">
+        {/* ════════════════════════════════════════════
+            Main — Digital Smile Design visualization
+            ════════════════════════════════════════════ */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-20 lg:mb-28">
           <motion.div
             initial={{ opacity: 0, x: reduced ? 0 : -28 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -95,14 +95,57 @@ export function Technology() {
             transition={{ duration: DUR.slower, ease: EASE }}
             className="lg:col-span-7"
           >
-            <div className="shadow-[0_40px_88px_-36px_rgba(18,16,15,0.4)]">
+            {/* Step indicator — BEFORE → DESIGN → AFTER */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: DUR.slow, ease: EASE, delay: 0.15 }}
+              className="flex items-center gap-4 mb-6 text-[0.625rem] font-medium tracking-[0.22em] uppercase text-warmgray"
+              aria-hidden="true"
+            >
+              <span>Current</span>
+              <span className="flex-1 h-px bg-stone" />
+              <span className="text-gold-deep">Digital Design</span>
+              <span className="flex-1 h-px bg-stone" />
+              <span>Result</span>
+            </motion.div>
+
+            <div className="relative shadow-[0_40px_88px_-36px_rgba(18,16,15,0.4)]">
               <SmilePreviewSlider
                 beforeSrc="/images/gallery-1.jpg"
                 afterSrc="/images/gallery-2.jpg"
-                beforeLabel="Current Smile"
-                afterLabel="DSD Preview"
+                beforeLabel="Current"
+                afterLabel="Digital Design"
                 aspectClass="aspect-[16/10]"
               />
+
+              {/* Technical annotation layer — quiet blueprint marks */}
+              <div className="pointer-events-none absolute inset-0 z-30" aria-hidden="true">
+                {/* Corner ticks */}
+                <span className="absolute top-3 left-3 h-3 w-3 border-t border-l border-gold/60" />
+                <span className="absolute top-3 right-3 h-3 w-3 border-t border-r border-gold/60" />
+                <span className="absolute bottom-3 left-3 h-3 w-3 border-b border-l border-gold/60" />
+                <span className="absolute bottom-3 right-3 h-3 w-3 border-b border-r border-gold/60" />
+
+                {/* Measurement line */}
+                <span className="absolute top-[30%] left-[8%] right-[8%] h-px bg-gold/40" />
+                <span className="absolute top-[30%] left-[8%] h-2 w-px bg-gold/60" />
+                <span className="absolute top-[30%] right-[8%] h-2 w-px bg-gold/60" />
+                <span className="absolute top-[26%] left-[8%] text-[0.5rem] font-medium tracking-[0.18em] uppercase text-gold/80">
+                  Facial midline
+                </span>
+
+                {/* Slow scan line */}
+                {!reduced && (
+                  <motion.span
+                    initial={{ left: "6%" }}
+                    animate={{ left: "94%" }}
+                    transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute inset-y-0 w-px bg-gold/30"
+                  />
+                )}
+              </div>
             </div>
           </motion.div>
 
@@ -135,21 +178,30 @@ export function Technology() {
           </motion.ul>
         </div>
 
-        {/* ── Supporting toolkit — one quiet text row ── */}
+        {/* ── Supporting metrics — one quiet hairline row ── */}
         <motion.div
           initial={{ opacity: 0, y: reduced ? 0 : 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: DUR.slow, ease: EASE }}
+          className="border-t border-ink/10"
+          role="list"
+          aria-label="Technology metrics"
         >
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 border border-ink/10">
-            {toolkit.map((tech) => (
-              <div key={tech.name} className="bg-ivory p-6 lg:p-7">
-                <p className="font-serif text-3xl text-ink mb-2">{tech.value}</p>
-                <p className="text-[0.6875rem] font-medium tracking-[0.18em] uppercase text-ink mb-1">
-                  {tech.name}
-                </p>
-                <p className="text-[0.6875rem] text-warmgray">{tech.detail}</p>
+          <div className="grid grid-cols-2 lg:grid-cols-4">
+            {metrics.map((metric, i) => (
+              <div
+                key={metric.name}
+                className={`flex items-baseline gap-4 py-6 lg:py-7 ${
+                  i > 0 ? "border-l border-ink/10 pl-6 lg:pl-10" : ""
+                } ${i >= 2 ? "border-t lg:border-t-0 border-ink/10" : ""}`}
+              >
+                <span className="font-serif text-2xl lg:text-3xl text-ink leading-none tabular-nums">
+                  {metric.value}
+                </span>
+                <span className="text-[0.625rem] font-medium tracking-[0.18em] uppercase text-warmgray">
+                  {metric.name}
+                </span>
               </div>
             ))}
           </div>

@@ -11,16 +11,7 @@ const EASE = [0.25, 0.1, 0.25, 1] as const;
 const navGroups = [
   { title: "Clinic", links: footerLinks.clinic },
   { title: "Treatments", links: footerLinks.treatments },
-  { title: "Resources", links: footerLinks.resources },
-];
-
-const topLinks = [
-  { label: "Clinic", href: "#clinic" },
-  { label: "Treatments", href: "#treatments" },
-  { label: "Technology", href: "#technology" },
-  { label: "Patient Stories", href: "#testimonials" },
-  { label: "Results", href: "#results" },
-  { label: "Contact", href: "#book" },
+  { title: "Explore", links: footerLinks.resources },
 ];
 
 const socialLinks = [
@@ -62,30 +53,7 @@ export function Footer() {
         {/* ── Thin gold rule ── */}
         <div className="h-px bg-gold/50 mb-12 lg:mb-14" aria-hidden="true" />
 
-        {/* ── Links ── */}
-        <motion.nav
-          initial={{ opacity: 0, y: reduced ? 0 : 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: DUR.slow, ease: EASE, delay: 0.1 }}
-          aria-label="Footer navigation"
-          className="mb-12 lg:mb-16"
-        >
-          <ul className="flex flex-wrap items-center gap-x-10 gap-y-4">
-            {topLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-[0.8125rem] font-medium tracking-[0.12em] uppercase text-light/70 hover:text-gold-light transition-colors duration-500"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </motion.nav>
-
-        {/* ── Columns ── */}
+        {/* ── Columns — Clinic / Treatments / Explore / Visit ── */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -137,9 +105,6 @@ export function Footer() {
             </div>
 
             <div className="mt-6">
-              <h3 className="text-[0.625rem] font-medium tracking-[0.22em] uppercase text-light/40 mb-4">
-                Hours
-              </h3>
               <dl className="space-y-1.5">
                 {footerLinks.contact.hours.map((hour) => (
                   <div key={hour.days} className="flex items-center justify-between gap-6 text-[0.8125rem]">

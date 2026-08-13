@@ -16,7 +16,7 @@ import { BOOK_HREF } from "@/data/navigation";
 const EASE = [0.25, 0.1, 0.25, 1] as const;
 
 const stats = [
-  { value: "18+", label: "Years" },
+  { value: "15+", label: "Years" },
   { value: "15K+", label: "Smiles" },
   { value: "4.9", label: "Google Rating" },
 ];
